@@ -35,9 +35,9 @@ import math
 def main():
     """ Calls the   TEST   functions in this module. """
     #run_test_sum_sequence()
-    run_test_count_items_bigger_than()
-    # run_test_count_positive_sines()
-    # run_test_sum_first_n()
+    #run_test_count_items_bigger_than()
+    #run_test_count_positive_sines()
+    run_test_sum_first_n()
 
 
 def run_test_sum_sequence():
@@ -562,15 +562,20 @@ def count_positive_sines(numbers):
       :type sequence: list or tuple (of numbers)
     """
     # -------------------------------------------------------------------------
-    # TODO: 7. Implement and test this function.
+    # DONE: 7. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     # -------------------------------------------------------------------------
 
+    total = 0
+    for k in range(len(numbers)):
+        if math.sin(numbers[k]) > 0:
+            total = total + 1
+    return total
 
 def run_test_sum_first_n():
     """ Tests the   sum_first_n   function. """
     # -------------------------------------------------------------------------
-    # TODO: 8. Implement this TEST function.
+    # DONE: 8. Implement this TEST function.
     #   It TESTS the  sum_first_n  function defined below.
     #   Include at least ** 2 ** ADDITIONAL tests.
     #
@@ -641,6 +646,27 @@ def run_test_sum_first_n():
 
     # TO DO 8 (continued):  Add your 2 ADDITIONAL tests here:
 
+    # Test 8:  This test uses a RANDOMLY generated sequence
+    #          and an ORACLE to determine the expected (correct) result.
+    sequence = []
+    for _ in range(10000):
+        sequence.append(random.randrange(-100, 100))
+    expected = builtins.sum(sequence[:-4000])
+    actual = sum_first_n(sequence, 6000)
+    print()
+    print('Test 8 expected:', expected)
+    print('       actual:  ', actual)
+
+    # Test 9:  This test uses a RANDOMLY generated sequence
+    #          and an ORACLE to determine the expected (correct) result.
+    sequence = []
+    for _ in range(10000):
+        sequence.append(random.randrange(-100, 100))
+    expected = builtins.sum(sequence[:-4000])
+    actual = sum_first_n(sequence, 6000)
+    print()
+    print('Test 9 expected:', expected)
+    print('       actual:  ', actual)
 
 def sum_first_n(numbers, n):
     """
@@ -664,7 +690,7 @@ def sum_first_n(numbers, n):
       :type n: int
     """
     # -------------------------------------------------------------------------
-    # TODO: 9. Implement and test this function.
+    # DONE: 9. Implement and test this function.
     #          Tests have been written for you (above).
     #
     # RESTRICTION:
@@ -674,6 +700,10 @@ def sum_first_n(numbers, n):
     #         as an ORACLE in TESTING this function, however.
     # -------------------------------------------------------------------------
 
+    total = 0
+    for k in range(n):
+        total = total + numbers[k]
+    return total
 
 # -----------------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
